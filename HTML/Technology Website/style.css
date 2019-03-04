@@ -1,0 +1,33 @@
+.justify {
+  text-align: justify;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.inherit-text {
+  text-align: inherit;
+}
+.paragraph {
+  text-align: justify;
+  text-indent: 25px;
+}
+.center-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+a:link {
+  color: #80bfff;
+  text-decoration: none;
+}
+a:visited {
+  color: #004080;
+  text-decoration: none;
+}
+a:hover {
+  color: #66b3ff;
+  text-decoration: none;
+}
