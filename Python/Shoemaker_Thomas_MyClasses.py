@@ -625,16 +625,14 @@ class Prospector(CarpetLayer):
             self.faceEast()
         else:
             self.turnOff()
-class TreasureHunter(Prospector):
     def hunt(self):
         while self.frontIsClear():
             if self.nextToABeeper():
                 self.findNextDirection()
             self.move()
         self.findNextDirection()
-
-
-
-
-
-            
+    def goToOrigin(self):
+        while self.frontIsClear():
+           self.move()
+        self.turnLeft()
+        
