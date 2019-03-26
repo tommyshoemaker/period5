@@ -1,0 +1,7 @@
+$base-color: #AD141E;
+.blue-bar {
+	@include mdc-top-app-bar-fill-color($base-color);
+}
+.big {
+	font-size: 50px;
+}
