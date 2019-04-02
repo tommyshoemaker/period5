@@ -43,16 +43,20 @@ ball = canvas.create_oval(x1, y1, x2, y2, fill="#000000", outline="")
 #Place the image on the canvas at xImage, yImage:
 shark = canvas.create_image(xImage,yImage,image=sharkImageForward)
 while True:
-   x1 += 0.5
-   x2 = x1 + 50
-   y2 = y1 + 50
-   canvas.coords(ball, x1, y1, x2, y2)
    while not xImage == 500:
+      x1 += 0.5
+      x2 = x1 + 50
+      y2 = y1 + 50
+      canvas.coords(ball, x1, y1, x2, y2)
       xImage = xImage + 0.5
       yImage = yImage - 0.5
       canvas.coords(shark,xImage,yImage)
       tk.update()
    while not xImage == 0:
+      x1 -= 0.5
+      x2 = x1 + 50
+      y2 = y1 + 50
+      canvas.coords(ball, x1, y1, x2, y2)
       xImage = xImage - 0.5
       yImage = yImage + 0.5
       canvas.coords(shark,xImage,yImage)
