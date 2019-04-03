@@ -24,7 +24,11 @@ gridImage = PhotoImage(file="pics/tkGrid.gif")
 
 #Place the grid image on the canvas at 250,250:
 canvas.create_image(250,250,image=gridImage)
-
+#Signs
+sharksign = 0
+squaresign = 0
+ballsign1 = 0
+ballsign2 = 0
 
 x1 = 100
 y1 = 200
@@ -38,30 +42,25 @@ yImage = 450
 sharkImageForward = PhotoImage(file="pics/sharkforwards.gif")
 sharkImageBackward = PhotoImage(file="pics/sharkbackwards.gif")
 
-ball = canvas.create_oval(x1, y1, x2, y2, fill="#000000", outline="")
+ball = canvas.create_oval(x1, y1, x2, y2, fill="#bbbbbb", outline="")
 
 #Place the image on the canvas at xImage, yImage:
 shark = canvas.create_image(xImage,yImage,image=sharkImageForward)
+def goUp(name, x, y):
+   x  += 0.5
+   y -= 0.5
+   canvas.coords(name, x, y)
+def goDown(name, x, y):
+   x -= 0.5
+   y += 0.5
+   canvas.coords(name, x, y)
 while True:
-   while not xImage == 500:
-      x1 += 0.5
-      x2 = x1 + 50
-      y2 = y1 + 50
-      canvas.coords(ball, x1, y1, x2, y2)
-      xImage = xImage + 0.5
-      yImage = yImage - 0.5
-      canvas.coords(shark,xImage,yImage)
-      tk.update()
-   while not xImage == 0:
-      x1 -= 0.5
-      x2 = x1 + 50
-      y2 = y1 + 50
-      canvas.coords(ball, x1, y1, x2, y2)
-      xImage = xImage - 0.5
-      yImage = yImage + 0.5
-      canvas.coords(shark,xImage,yImage)
-      tk.update()
-   #Refresh the screen
+   if x1 == 500:
+      sharksign = 1
+   if xImage == 500:
+      squaresign = 1
+   if sharksign == 0:
+      goUp(shark, xImage, yImage)
    tk.update()
    
    
