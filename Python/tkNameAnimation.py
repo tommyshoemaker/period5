@@ -1,14 +1,10 @@
 #
 # Name Animation:
 # 
-#
-
-
 
 from tkinter import *
 import time
 import random
-
                 
 # The  task block  
 
@@ -31,6 +27,10 @@ yx = 700
 yy = 100
 #Create the variables that will hold the PhotoImages for each of your letters:
 letterT = PhotoImage(tx, ty, file="Pics/Letters/Letter_T.gif")
+letterO = PhotoImage(ox, oy, file="Pics/Letters/Letter_O.gif")
+letterM1 = PhotoImage(firstmx, firstmy, file="Pics/Letters/Letter_M_1.gif")
+letterM2 = PhotoImage(secondmx, secondmy, file="Pics/Letters/Letter_M_1.gif")
+letterY = PhotoImage(yx, yy, file="Pics/Letters/Letter_Y.gif")
 #Place the your letter images at their starting places on the canvas:
 
 #Add some shapes to enhance your program:
@@ -40,10 +40,7 @@ letterT = PhotoImage(tx, ty, file="Pics/Letters/Letter_T.gif")
 #  2)up and down movement, 3)left and right movement, 4) diagonal movement.
 # No letter should go off the screen and not come back.  Make a letter "bounce".
 while 1:
- 
    #Make sure your code inside the while loop is indented to this level.
-
-
    #Refresh the screen
    tk.update()
    time.sleep(.05)
