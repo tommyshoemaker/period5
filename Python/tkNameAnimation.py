@@ -26,11 +26,11 @@ secondmy = 100
 yx = 700
 yy = 100
 #Create the variables that will hold the PhotoImages for each of your letters:
-letterT = PhotoImage(tx, ty, file="Pics/Letters/Letter_T.gif")
-letterO = PhotoImage(ox, oy, file="Pics/Letters/Letter_O.gif")
-letterM1 = PhotoImage(firstmx, firstmy, file="Pics/Letters/Letter_M_1.gif")
-letterM2 = PhotoImage(secondmx, secondmy, file="Pics/Letters/Letter_M_1.gif")
-letterY = PhotoImage(yx, yy, file="Pics/Letters/Letter_Y.gif")
+imageT = PhotoImage(file="Pics/Letters/Letter_T.gif")
+imageO = PhotoImage(file="Pics/Letters/Letter_O.gif")
+imageM1 = PhotoImage(file="Pics/Letters/Letter_M_1.gif")
+imageM2 = PhotoImage(file="Pics/Letters/Letter_M_1.gif")
+imageY = PhotoImage(file="Pics/Letters/Letter_Y.gif")
 #Place the your letter images at their starting places on the canvas:
 
 #Add some shapes to enhance your program:
@@ -41,16 +41,7 @@ letterY = PhotoImage(yx, yy, file="Pics/Letters/Letter_Y.gif")
 # No letter should go off the screen and not come back.  Make a letter "bounce".
 while 1:
    #Make sure your code inside the while loop is indented to this level.
+   
    #Refresh the screen
    tk.update()
    time.sleep(.05)
-   
-
-
-
-
-    
-
-
-
-    
