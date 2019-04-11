@@ -32,7 +32,7 @@ imageM1 = PhotoImage(file="Pics/Letters/Letter_M_1.gif")
 imageM2 = PhotoImage(file="Pics/Letters/Letter_M_1.gif")
 imageY = PhotoImage(file="Pics/Letters/Letter_Y.gif")
 #Place the your letter images at their starting places on the canvas:
-
+letterT = 
 #Add some shapes to enhance your program:
 
 #Add the code animate your letters in some way inside the while 1 loop.
