@@ -5,22 +5,14 @@
 
 
 from tkinter import *
-import time
-
-
-
-
-
-
-
-          
+import time         
                 
 # The Karel task block  
 
 tk = Tk()
 canvas = Canvas(tk, width=600, height=600)
 canvas.pack()
-pic1 = PhotoImage(file="computer.gif")
+pic1 = PhotoImage(file="Pics/computer.gif")
 canvas.create_image(200,200,image=pic1)
 #TO DO: Create  a Red line that starts at x1,y1 = 5,5 and ends at x2,y2=20,20
 canvas.create_line(5,5,200,200,fill="red")
