@@ -30,3 +30,12 @@ class Sprite():
         #[x,y]
         return spriteCoords[1]
         #0,1
+    def key_control(self, event):
+        if event.keysym == "w":
+            self.velocityY(-5)
+        elif event.keysym == "a":
+            self.velocityX(-5)
+        elif event.keysym == "s":
+            self.velocityY(5)
+        elif event.keysym == "d":
+            self.velocityX(5)
