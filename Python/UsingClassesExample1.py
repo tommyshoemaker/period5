@@ -21,7 +21,6 @@ appleLogoImage = PhotoImage(file = "Pics/applelogo.gif")
 #background
 canvas.create_rectangle(0, 0, 800, 400, fill = "blue", outline = "")
 #Create a sprite called mySprite on the canvas at 100, 50 with imageM
-
 mySprite = Sprite(canvas, 100, 0, imageM)
 appleLogo = Sprite(canvas, 100, 0, appleLogoImage)
 
@@ -40,5 +39,6 @@ while 1:
    canvas.bind_all("<KeyPress-a>", appleLogo.key_control)
    canvas.bind_all("<KeyPress-s>", appleLogo.key_control)
    canvas.bind_all("<KeyPress-d>", appleLogo.key_control)
+   canvas.bind_all("<KeyPress-f>", appleLogo.key_control)
    #Refresh the screen
    tk.update()
