@@ -8,7 +8,7 @@
 from tkinter import *
 import time
 import random
-from MyTkClasses2019 import *
+from MyTkClasses2019_2 import *
 # The  task block
 tk = Tk()
 #TO DO:  Create a canvas that is big enough for your name to fit:
@@ -28,9 +28,9 @@ appleLogo = Sprite(canvas, 100, 0, appleLogoImage)
 while 1:
    #Make sure your code inside the while loop is indented to this level.
    #Make mySprite move down
-   mySprite.velocityY(1)
+   #mySprite.velocityY(1)
    #Make the sprite move to the right also:
-   mySprite.velocityX(1)
+   #mySprite.velocityX(1)
    canvas.create_rectangle(320, 190, 450, 210, fill = "blue", outline = "")
    canvas.create_text(400, 200, text = ("x:", mySprite.getX()), fill = "#ffffff", font = ("Times", 25))
    #Make the sprite move up when it reaches the bottom edge:
@@ -39,6 +39,9 @@ while 1:
    canvas.bind_all("<KeyPress-a>", appleLogo.key_control)
    canvas.bind_all("<KeyPress-s>", appleLogo.key_control)
    canvas.bind_all("<KeyPress-d>", appleLogo.key_control)
-   canvas.bind_all("<KeyPress-f>", appleLogo.key_control)
+   canvas.bind_all("<KeyPress-q>", appleLogo.key_control)
+   canvas.bind_all("<KeyPress-e>", appleLogo.key_control)
+   canvas.bind_all("<KeyPress-z>", appleLogo.key_control)
+   canvas.bind_all("<KeyPress-c>", appleLogo.key_control)
    #Refresh the screen
    tk.update()

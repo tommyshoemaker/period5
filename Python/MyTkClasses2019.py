@@ -30,16 +30,16 @@ class Sprite():
         #[x,y]
         return spriteCoords[1]
         #0,1
-    def f(rectx1, recty1, rectx2, recty2, textx, texty):
+    def f(self, eventw, canvas):
         if event.keysym == "f":
-            canvas.create_rectangle(rectx1, recty1, rectx2, recty2, fill = "blue")
-            canvas.create_text(textx, texty, text = ("Press F To Pay Respects."), fill = "#ffffff", font = ("Times", 40))
+            canvas.create_rectangle(0, 0, 800, 400, fill = "blue")
+            canvas.create_text(0, 0, text = ("Press F To Pay Respects."), fill = "#ffffff", font = ("Times", 40))
     def key_control(self, event):
         if event.keysym == "w":
-            self.velocityY(-69)
+            self.velocityY(-5)
         elif event.keysym == "a":
-            self.velocityX(-69)
+            self.velocityX(-5)
         elif event.keysym == "s":
-            self.velocityY(69)
+            self.velocityY(5)
         elif event.keysym == "d":
-            self.velocityX(69)
+            self.velocityX(5)
