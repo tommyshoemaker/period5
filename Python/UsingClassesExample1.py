@@ -23,6 +23,7 @@ canvas.create_rectangle(0, 0, 800, 400, fill = "blue", outline = "")
 #Create a sprite called mySprite on the canvas at 100, 50 with imageM
 mySprite = Sprite(canvas, 100, 0, imageM)
 appleLogo = Sprite(canvas, 100, 0, appleLogoImage)
+indicator = canvas.create_oval(25, 25, 50, 50, fill = "green", outline = "")
 
 #Add the code animate your letters in some way inside the while 1 loop.
 while 1:
@@ -43,5 +44,8 @@ while 1:
    canvas.bind_all("<KeyPress-e>", appleLogo.key_control)
    canvas.bind_all("<KeyPress-z>", appleLogo.key_control)
    canvas.bind_all("<KeyPress-c>", appleLogo.key_control)
+
+   mySprite.isTouching(appleLogo, canvas, indicator)
+   appleLogo.isTouching(mySprite, canvas, indicator)
    #Refresh the screen
    tk.update()

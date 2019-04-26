@@ -35,7 +35,10 @@ class Sprite():
 
     def getX(self):
         spriteCoords = self.canvas.coords(self.image)  #[x, y]
-        return spriteCoords[0]                         # 0, 1
+        return spriteCoords[0]                        # 0, 1
+    def getY(self):
+        spriteCoords = self.canvas.coords(self.image)
+        return spriteCoords[1]
 
     def key_control(self, event):
         #Add events to move left, right, up, and down:
@@ -59,9 +62,8 @@ class Sprite():
         elif event.keysym =="c":
             self.velocityX(5)
             self.velocityY(5)
-        
 
-    def isTouching(self, target):
+    def isTouching(self, target, canvas, indicator):
         spriteCoords = self.canvas.coords(self.image)
         spriteLeft = spriteCoords[0] - self.width/2
         spriteRight = spriteCoords[0] + self.width/2
@@ -74,11 +76,18 @@ class Sprite():
         targetTop = targetCoords[1] - target.height/2
         targetBottom = targetCoords[1] + target.height/2
         
-        
         #if self is moving right toward sprite,
-        if (spriteLeft <= targetRight and spriteLeft >= targetLeft) \
-        or (spriteRight >= targetLeft and spriteRight <= targetRight):
+        """if (spriteLeft <= targetRight and spriteLeft >= targetLeft) \
+        or (spriteRight >= targetLeft and spriteRight <= targetRight):"""
+        if (spriteTop <= targetBottom and spriteTop >= targetTop) \
+        or (spriteBottom >= targetTop and spriteBottom <= targetBottom):
             print("Touching")
+            """canvas.create_oval(25, 25, 50, 50, fill = "green", outline = "")
+        else:
+            try:
+                canvas.delete(indicator)
+            except:
+                print("Cannot delete")"""
         
 
     #define the getY method:
