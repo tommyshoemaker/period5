@@ -2,60 +2,53 @@
 # Graphic Classes
 #
 
-
-
 from tkinter import *
 import time
-
-
-
-        
+       
 class Sprite ():
-    def __init__(self,canvas,x,y,pic):
+    def __init__(self, canvas, x, y, pic):
         self.x = x
         self.y = y
         self.canvas = canvas
-        self.image = self.canvas.create_image(x,y,image=pic)
+        self.image = self.canvas.create_image(x, y, image=pic)
         self.width = pic.width()
         self.height = pic.height()
                 
-    def velocityX(self,speed):
+    def velocityX(self, speed):
         self.x = self.x + speed
-        self.canvas.coords(self.image,self.x,self.y)
+        self.canvas.coords(self.image, self.x, self.y)
 
     #define the velocityY method:
-    def velocityY(self,speed):
+    def velocityY(self, speed):
         self.y = self.y + speed
-        self.canvas.coords(self.image,self.x,self.y)
+        self.canvas.coords(self.image, self.x, self.y)
 
-    def changeImage(self,pic):
+    def changeImage(self, pic):
         self.canvas.delete(self.image)
-        self.image = self.canvas.create_image(self.x,self.y,image=pic)
+        self.image = self.canvas.create_image(self.x, self.y, image=pic)
 
-    def getX (self):
-        spriteCoords = self.canvas.coords(self.image)  #[x,y]
-        return spriteCoords[0]                         # 0,1
+    def getX(self):
+        spriteCoords = self.canvas.coords(self.image)  #[x, y]
+        return spriteCoords[0]                         # 0, 1
 
-    def getY (self):
-        spriteCoords = self.canvas.coords(self.image)  #[x,y]
-        return spriteCoords[1]                         # 0,1
+    def getY(self):
+        spriteCoords = self.canvas.coords(self.image)  #[x, y]
+        return spriteCoords[1]                         # 0, 1
 
 
     def draw(self):
         #set the velocityX of the sprite so it moves to the left:
-        
+        self.velocityX(-5)
         #if sprite reaches left edge, reset it back to the right edge:
-
-
         #AFTER YOU FINISH THIS METHOD, SAVE AND TEST THE THE MAIN PROGRAM
         
 
-class PlayerSprite (Sprite):
-    def __init__(self,canvas,x,y,pic):
+class PlayerSprite(Sprite):
+    def __init__(self, canvas, x, y, pic):
         self.x = x
         self.y = y
         self.canvas = canvas
-        self.image = self.canvas.create_image(x,y,image=pic)
+        self.image = self.canvas.create_image(x, y, image=pic)
         
         self.width = pic.width()
         self.height = pic.height()
@@ -64,7 +57,7 @@ class PlayerSprite (Sprite):
         self.jumping = False  #state of player sprite
         
         
-    def isTouching(self,target):
+    def isTouching(self, target):
         
         spriteCoords = self.canvas.coords(self.image)  #0 is x,  1 is y
         #sprite's left and right edge coordinates (on x axis)
@@ -82,7 +75,7 @@ class PlayerSprite (Sprite):
         targetTop = targetCoords[1] - target.height/2
         targetBottom = targetCoords[1] + target.height/2
        
-        #Check if any sprite coordinates are within target coords,
+        #Check if any sprite coordinates are within target coords, 
         # return True:
         if ((spriteLeft <= targetRight and spriteLeft >= targetLeft) \
         or (spriteRight >= targetLeft and spriteRight <= targetRight) \
@@ -92,7 +85,7 @@ class PlayerSprite (Sprite):
         or ( spriteBottom > targetBottom and spriteTop < targetTop)):
             return True
 
-    def key_control(self,event):
+    def key_control(self, event):
         #Add events to move left, right, up, and down:
         if event.keysym =="Left":
             self.velocityX(-5)
@@ -108,9 +101,9 @@ class PlayerSprite (Sprite):
             
 
     def draw(self):
-        self.canvas.bind_all("<KeyPress-Left>",self.key_control)
-        self.canvas.bind_all("<KeyPress-Right>",self.key_control)
-        self.canvas.bind_all("<KeyPress-Up>",self.key_control)
+        self.canvas.bind_all("<KeyPress-a>", self.key_control)
+        self.canvas.bind_all("<KeyPress-d>", self.key_control)
+        self.canvas.bind_all("<KeyPress-w>", self.key_control)
 
         #direction of velocityY is controled by its sign
         self.velocityY(5*self.direction)
