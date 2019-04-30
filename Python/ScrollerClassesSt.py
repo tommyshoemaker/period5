@@ -94,7 +94,6 @@ class PlayerSprite(Sprite):
         if self.y >= 325: #on ground
             self.velocityY(-15)
             self.jumping = True
-            
 
     def draw(self):
         self.canvas.bind_all("<KeyPress-a>",self.key_control)
@@ -106,12 +105,11 @@ class PlayerSprite(Sprite):
 
         #if player sprite is jumping, change direction to -1
         #so that it goes up:
-
-        
+        if self.jumping:
+            self.direction = -1 
         #if player sprite has reached maximum height of the jump
         #  1)change direction to 1 so that it starts going down
         #  2) change self.jumping to False
-
         
         #if player has come back down to the ground (based on it's y),
         # change direction to 0 so it doesn't move

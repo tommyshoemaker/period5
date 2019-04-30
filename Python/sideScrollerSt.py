@@ -66,7 +66,9 @@ while 1:
    if frog.isTouching(mushroom):
       mushroom.x = 510
       lives -= 1
-      canvas.create_rectangle(110,0,200,40,fill="#00adff",outline="")
+      if lives <= 0:
+         break
+      canvas.create_rectangle(100,0,200,40,fill="#00adff",outline="")
       canvas.create_text( 150,25,text= ("Lives:",lives),fill="white", font=("Arial",20))
 
    #If the frog touches the fly, the following should happen:
@@ -82,7 +84,7 @@ while 1:
    #Refresh the screen
    tk.update_idletasks()
    tk.update()
-   time.sleep(.05)
+   time.sleep(0.05)
    
 
 
