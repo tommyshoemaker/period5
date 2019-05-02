@@ -34,9 +34,9 @@ class Sprite ():
         return spriteCoords[1]                         # 0,1
 
 
-    def draw(self):
+    def draw(self, sign, speed):
         #set the velocityX of the sprite so it moves to the left:
-        self.velocityX(-5)
+        self.velocityX(sign*speed)
         #if sprite reaches left edge, reset it back to the right edge:
         #AFTER YOU FINISH THIS METHOD, SAVE AND TEST THE THE MAIN PROGRAM
 class PlayerSprite(Sprite):
@@ -106,15 +106,14 @@ class PlayerSprite(Sprite):
         #if player sprite is jumping, change direction to -1
         #so that it goes up:
         if self.jumping:
-            self.direction = -1 
+            self.direction = -1
         #if player sprite has reached maximum height of the jump
         #  1)change direction to 1 so that it starts going down
         #  2) change self.jumping to False
-        
+        if self.y <= 150:
+            self.direction = 1
+            self.jumping = False
         #if player has come back down to the ground (based on it's y),
         # change direction to 0 so it doesn't move
-        
-            
-
-
-    
+        if self.y >= 325:
+            self.direction = 0
