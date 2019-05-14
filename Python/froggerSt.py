@@ -1,5 +1,6 @@
 #Frogger Game
-from tkinter import *
+#from tkinter import *
+import tkinter
 import time
 import random
 from froggerClassesSt import *
@@ -37,7 +38,7 @@ lives = 3
 #Create the  frog PlayerSprites:
 #frog should start in the horizontal middle, sitting on grass (or whatever
 #your bottom 5th is.
-frog = PlayerSprite(canvas,250,325,frogImage)
+frog = spriteLeft(canvas,250,325,frogImage)
 #TO DO:
 #Create the regular Sprites:
 #Mushroom should start all the way to the right and also
@@ -89,11 +90,10 @@ while alive:
       score += 1
       canvas.create_rectangle(0, 0, 110, 40, fill="#00adff", outline="")
       canvas.create_text(50, 25, text=("Score:", score), fill="white", font=("Arial", 20))
-
    #Refresh the screen
    tk.update_idletasks()
    tk.update()
-   time.sleep(0.005)
+   time.sleep(0.05)
 canvas.create_rectangle(-50, -50, 550, 450, fill="black")
 canvas.create_text(252, 200, text=("GAME OVER!"), fill="white", font=("Century Gothic", 78))
 canvas.create_image(frog.x, frog.y, image=deadFrogImage)

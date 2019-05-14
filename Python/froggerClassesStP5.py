@@ -1,8 +1,15 @@
 #
 # Graphic Classes
 #
+
+
+
 from tkinter import *
 import time
+
+
+
+        
 class Sprite ():
     def __init__(self,canvas,x,y,pic):
         self.x = x
@@ -34,12 +41,18 @@ class Sprite ():
         return spriteCoords[1]                         # 0,1
 
 
-    def draw(self, sign, speed):
+    def draw(self):
         #set the velocityX of the sprite so it moves to the left:
-        self.velocityX(sign*speed)
+        self.velocityX(-5)
         #if sprite reaches left edge, reset it back to the right edge:
+        if self.x < 0:
+            self.x = 520
+
         #AFTER YOU FINISH THIS METHOD, SAVE AND TEST THE THE MAIN PROGRAM
-class PlayerSprite(Sprite):
+
+
+
+class PlayerSprite (Sprite):
     def __init__(self,canvas,x,y,pic):
         self.x = x
         self.y = y
@@ -80,25 +93,28 @@ class PlayerSprite(Sprite):
         or ( spriteBottom >= targetTop and spriteBottom <= targetBottom) \
         or ( spriteBottom > targetBottom and spriteTop < targetTop)):
             return True
+        else:
+            return False
 
     def key_control(self,event):
         #Add events to move left, right, up, and down:
-        if event.keysym =="a":
+        if event.keysym =="Left":
             self.velocityX(-5)
-        elif event.keysym =="d":
+        elif event.keysym =="Right":
             self.velocityX(5)
-        elif event.keysym =="w":
-            self.jump()
+        elif event.keysym =="Up":
+            self.startJump()
 
-    def jump(self):
+    def startJump(self):
         if self.y >= 325: #on ground
-            self.velocityY(-15)
+            self.velocityY(-5)
             self.jumping = True
+            
 
     def draw(self):
-        self.canvas.bind_all("<KeyPress-a>",self.key_control)
-        self.canvas.bind_all("<KeyPress-d>",self.key_control)
-        self.canvas.bind_all("<KeyPress-w>",self.key_control)
+        self.canvas.bind_all("<KeyPress-Left>",self.key_control)
+        self.canvas.bind_all("<KeyPress-Right>",self.key_control)
+        self.canvas.bind_all("<KeyPress-Up>",self.key_control)
 
         #direction of velocityY is controled by its sign
         self.velocityY(5*self.direction)
@@ -107,31 +123,21 @@ class PlayerSprite(Sprite):
         #so that it goes up:
         if self.jumping:
             self.direction = -1
+
+        
         #if player sprite has reached maximum height of the jump
         #  1)change direction to 1 so that it starts going down
         #  2) change self.jumping to False
         if self.y <= 150:
             self.direction = 1
             self.jumping = False
+ 
         #if player has come back down to the ground (based on it's y),
         # change direction to 0 so it doesn't move
         if self.y >= 325:
             self.direction = 0
+        
+           
 
-class spriteLeft(PlayerSprite):
-    def key_control(self,event):
-        #Add events to move left, right, up, and down:
-        if event.keysym =="a":
-            self.velocityX(-5)
-        elif event.keysym =="d":
-            self.velocityX(5)
-        elif event.keysym =="w":
-            self.velocityY(-5)
-        elif event.keysym == "s":
-            self.velocityY(5)
-    def draw(self):
-        self.canvas.bind_all("<KeyPress-a>", self.key_control)
-        self.canvas.bind_all("<KeyPress-d>", self.key_control)
-        self.canvas.bind_all("<KeyPress-w>", self.key_control)
-        self.canvas.bind_all("<KeyPress-s>", self.key_control)
-        #direction of velocityY is controled by its sigN
+
+    
