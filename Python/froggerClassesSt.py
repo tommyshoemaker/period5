@@ -118,7 +118,7 @@ class PlayerSprite(Sprite):
         if self.y >= 325:
             self.direction = 0
 
-class spriteLeft(PlayerSprite):
+"""class spriteLeft(PlayerSprite):
     def key_control(self,event):
         #Add events to move left, right, up, and down:
         if event.keysym =="a":
@@ -127,11 +127,8 @@ class spriteLeft(PlayerSprite):
             self.velocityX(5)
         elif event.keysym =="w":
             self.velocityY(-5)
-        elif event.keysym == "s":
-            self.velocityY(5)
+            
     def draw(self):
-        self.canvas.bind_all("<KeyPress-a>", self.key_control)
-        self.canvas.bind_all("<KeyPress-d>", self.key_control)
-        self.canvas.bind_all("<KeyPress-w>", self.key_control)
-        self.canvas.bind_all("<KeyPress-s>", self.key_control)
-        #direction of velocityY is controled by its sigN
+        #direction of velocityY is controled by its sign
+        self.velocityX(5)
+"""
