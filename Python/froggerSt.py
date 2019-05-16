@@ -34,7 +34,7 @@ canvas.create_rectangle(410,250,490,260,fill="Yellow",outline="")
 score = 0
 lives = 3
 
-frog = PlayerSprite(canvas,250,335,frogImage)
+frog = frogSprite(canvas,250,335,frogImage)
 redCar = Sprite(canvas,0,285,redCarImage)
 redCar2 = Sprite(canvas,-150,285,redCarImage2)
 blueCar = Sprite(canvas,500,225,blueCarImage)
@@ -49,20 +49,37 @@ flySign = -1
 mushroomSign = -1
 
 while alive:
-   if redCar.x == 550:
+   if redCar.x >= 550:
       redCar.x = -50
-   if redCar2.x == 550:
+   if redCar2.x >= 550:
       redCar2.x = -50
-   if blueCar.x == -50:
+   if blueCar.x <= -50:
       blueCar.x = 550
-   if blueCar2.x == -50:
+   if blueCar2.x <= -50:
       blueCar2.x = 550
+   if frog.isTouching(redCar):
+      lives -= 1
+      canvas.create_rectangle(100, 0, 200, 50, fill = "Tan", outline = "")
+      canvas.create_text(150,25,text= ("Lives:",lives),fill="white", font=("Arial",20))
+      frog.restart()
+   if frog.isTouching(redCar2):
+      lives -= 1
+      canvas.create_rectangle(100, 0, 200, 50, fill = "Tan", outline = "")
+      canvas.create_text(150,25,text= ("Lives:",lives),fill="white", font=("Arial",20))
+      frog.restart()
+   if frog.isTouching(blueCar):
+      lives -= 1
+      frog.restart()
+   if frog.isTouching(blueCar2):
+      lives -= 1
+      canvas.create_rectangle(100, 0, 200, 50, fill = "Tan", outline = "")
+      canvas.create_text(150,25,text= ("Lives:",lives),fill="white", font=("Arial",20))
+      frog.restart()
    frog.draw()
    redCar.draw(1, 5)
    redCar2.draw(1, 5)
    blueCar.draw(-1,7)
    blueCar2.draw(-1,7)
-
    tk.update_idletasks()
    tk.update()
    time.sleep(0.05)

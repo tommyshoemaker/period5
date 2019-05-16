@@ -117,7 +117,25 @@ class PlayerSprite(Sprite):
         # change direction to 0 so it doesn't move
         if self.y >= 325:
             self.direction = 0
-
+class frogSprite(PlayerSprite):
+    def key_control(self, event):
+        if event.keysym =="a":
+            self.velocityX(-10)
+        elif event.keysym =="d":
+            self.velocityX(10)
+        elif event.keysym =="w":
+            self.velocityY(-10)
+        elif event.keysym == "s":
+            self.velocityY(10)
+    def draw(self):
+        self.canvas.bind_all("<KeyPress-a>",self.key_control)
+        self.canvas.bind_all("<KeyPress-d>",self.key_control)
+        self.canvas.bind_all("<KeyPress-w>",self.key_control)
+        self.canvas.bind_all("<KeyPress-s>",self.key_control)
+    def restart(self):
+        self.x = 250
+        self.y = 335
+        
 """class spriteLeft(PlayerSprite):
     def key_control(self,event):
         #Add events to move left, right, up, and down:
