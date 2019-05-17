@@ -134,7 +134,8 @@ class frogSprite(PlayerSprite):
         self.canvas.bind_all("<KeyPress-s>",self.key_control)
     def restart(self):
         self.x = 250
-        self.y = 335
+        self.y = 340
+        self.velocityY(-5)
         
 """class spriteLeft(PlayerSprite):
     def key_control(self,event):

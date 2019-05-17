@@ -62,18 +62,23 @@ while alive:
       canvas.create_rectangle(100, 0, 200, 50, fill = "Tan", outline = "")
       canvas.create_text(150,25,text= ("Lives:",lives),fill="white", font=("Arial",20))
       frog.restart()
-   if frog.isTouching(redCar2):
+   elif frog.isTouching(redCar2):
       lives -= 1
       canvas.create_rectangle(100, 0, 200, 50, fill = "Tan", outline = "")
       canvas.create_text(150,25,text= ("Lives:",lives),fill="white", font=("Arial",20))
       frog.restart()
-   if frog.isTouching(blueCar):
+   elif frog.isTouching(blueCar):
       lives -= 1
       frog.restart()
-   if frog.isTouching(blueCar2):
+   elif frog.isTouching(blueCar2):
       lives -= 1
       canvas.create_rectangle(100, 0, 200, 50, fill = "Tan", outline = "")
       canvas.create_text(150,25,text= ("Lives:",lives),fill="white", font=("Arial",20))
+      frog.restart()
+   elif frog.y <= 0:
+      score += 1
+      canvas.create_rectangle(0, 0, 100, 50, fill = "Tan", outline = "")
+      canvas.create_text(50,25,text= ("Score:",score),fill="white", font=("Arial",20))
       frog.restart()
    frog.draw()
    redCar.draw(1, 5)
