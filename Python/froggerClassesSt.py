@@ -3,7 +3,7 @@
 #
 from tkinter import *
 import time
-class Sprite ():
+class Sprite():
     def __init__(self,canvas,x,y,pic):
         self.x = x
         self.y = y
@@ -132,11 +132,16 @@ class frogSprite(PlayerSprite):
         self.canvas.bind_all("<KeyPress-d>",self.key_control)
         self.canvas.bind_all("<KeyPress-w>",self.key_control)
         self.canvas.bind_all("<KeyPress-s>",self.key_control)
+    def notOnLog(self, logy, lognum):
+        if self.y < logy and not self.isTouching(lognum):
+            return True 
+        else:
+            return False
     def restart(self):
         self.x = 250
         self.y = 340
         self.velocityY(-5)
-        
+
 """class spriteLeft(PlayerSprite):
     def key_control(self,event):
         #Add events to move left, right, up, and down:
