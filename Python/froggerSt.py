@@ -47,6 +47,8 @@ log2 = Sprite(canvas,-50,145,log2Image)
 log3 = Sprite(canvas,600,180,log3Image)
 frog = frogSprite(canvas,250,335,frogImage)
 
+onLog = False
+
 #TO DO:
 #Display the value of score and lives toward the top of the canvas:
 canvas.create_text(50,25,text= ("Score:",score),fill="white", font=("Arial",20))
@@ -93,9 +95,29 @@ while alive:
       canvas.create_rectangle(0, 0, 100, 50, fill = "Tan", outline = "")
       canvas.create_text(50,25,text= ("Score:",score),fill="white", font=("Arial",20))
       frog.restart()
+
+   #Is touching log? If not, reset if also on river
    if frog.isTouching(log3):
-      frog.y = log3.y
       frog.x = log3.x
+      frog.velocityX(-5)
+      onLog = True
+   elif frog.isTouching(log2):
+      frog.x = log2.x
+      frog.velocityX(5)
+      onLog = True
+   elif frog.isTouching(log1):
+      frog.x = log1.x
+      frog.velocityX(-5)
+      onLog = True
+   else:
+      onLog = False
+   if not onLog:
+      if (frog.y < 200 and frog.y > 95):
+         lives -= 1
+         canvas.create_rectangle(100, 0, 200, 50, fill = "Tan", outline = "")
+         canvas.create_text(150,25,text= ("Lives:",lives),fill="white", font=("Arial",20))
+         frog.restart()
+         onLog = False
    #Make frog follow the log (frog.x is attached to log)
       
    if lives <= 0:
@@ -104,10 +126,10 @@ while alive:
    log2.draw(1, 6)
    log3.draw(-1, 5)
    frog.draw()
-#   redCar.draw(1, 5)
-#   redCar2.draw(1, 5)
-#   blueCar.draw(-1,7)
-#   blueCar2.draw(-1,7)
+   redCar.draw(1, 5)
+   redCar2.draw(1, 5)
+   blueCar.draw(-1,7)
+   blueCar2.draw(-1,7)
    tk.update_idletasks()
    tk.update()
    time.sleep(0.05)
