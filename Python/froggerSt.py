@@ -90,10 +90,13 @@ while alive:
       canvas.create_rectangle(100, 0, 200, 50, fill = "Tan", outline = "")
       canvas.create_text(150,25,text= ("Lives:",lives),fill="white", font=("Arial",20))
       frog.restart()
-   elif frog.y <= 0:
+   elif frog.y <= 60:
       score += 1
-      canvas.create_rectangle(0, 0, 100, 50, fill = "Tan", outline = "")
+      if lives < 3:
+         lives += 1
+      canvas.create_rectangle(0, 0, 200, 50, fill = "Tan", outline = "")
       canvas.create_text(50,25,text= ("Score:",score),fill="white", font=("Arial",20))
+      canvas.create_text(150,25,text= ("Lives:",lives),fill="white", font=("Arial",20))
       frog.restart()
 
    #Is touching log? If not, reset if also on river
